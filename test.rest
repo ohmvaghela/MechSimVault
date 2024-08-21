@@ -1,0 +1,29 @@
+### Create 
+POST http://localhost:8000/siteUser/create_user/
+Content-Type: application/json
+
+{
+  "email": "newuser9@example.com",
+  "password": "ohm123ohm",
+  "full_name": "New User",
+  "bio": "This is a new user.",
+  "institution": "Example Institution",
+  "role": "Developer",
+  "country": "INDIA",
+  "contact_info": "1234567890",
+  "skills": "Python, Django"
+}
+
+### get users
+GET http://localhost:8000/siteUser/get_users
+Accept: application/json
+
+### login 
+POST http://localhost:8000/siteUser/login_user/
+Content-Type: application/json
+
+{
+  "email":"newuser@example.com",
+  "password":"ohm123ohm"
+}
+

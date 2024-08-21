@@ -1,5 +1,5 @@
 **/__pycache__/
-**/db.sqlite3
+db.sqlite3
 media/
 *.log
 *.pot
@@ -7,3 +7,6 @@ media/
 
 # VS Code
 .vscode/*
+
+# test images
+/ztestimages
