@@ -57,3 +57,12 @@ class SiteUserLoginSerializer(serializers.Serializer):
 
     data['user'] = user
     return data
+
+class SiteUserUpdateSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = SiteUser
+    fields = [
+        'profile_picture', 'full_name', 'bio', 'institution', 
+        'role', 'country', 'contact_info', 'skills'
+    ]
+    read_only_fields = ['id', 'signup_date']

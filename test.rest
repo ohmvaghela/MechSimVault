@@ -3,7 +3,7 @@ POST http://localhost:8000/siteUser/create_user/
 Content-Type: application/json
 
 {
-  "email": "newuser9@example.com",
+  "email": "newuser12@example.com",
   "password": "ohm123ohm",
   "full_name": "New User",
   "bio": "This is a new user.",
@@ -25,5 +25,48 @@ Content-Type: application/json
 {
   "email":"newuser@example.com",
   "password":"ohm123ohm"
+}
+
+### update data
+POST http://localhost:8000/siteUser/update/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0MjY1Mjg3LCJpYXQiOjE3MjQyNjQ5ODcsImp0aSI6Ijc5NDZlNTc2ZTlhYTQ0MGE4N2RlZDhhZWVjMDk3OWI4IiwidXNlcl9pZCI6N30.c4VMFGNKTBHD1ddFCEcAEvUpsdcL9fKd1Ac7D1rAm7o
+Content-Type: application/json
+
+{
+  "full_name":"ohm N vaghela"
+}
+
+### update password
+POST http://localhost:8000/siteUser/update_password/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0MjYzNzU4LCJpYXQiOjE3MjQyNjM0NTgsImp0aSI6ImMyZDQzMjFhZmQzYzQ4ZTY4NjI4ZWI5OTdhZDNkYjQ5IiwidXNlcl9pZCI6N30.vkF8_-j6SynkVmsuGIvs7fabh643WBQSHX4agv5G5l4
+Content-Type: application/json
+
+{
+  "password":"ohm123ohm"
+}
+
+### Obtain JWT Token
+POST http://localhost:8000/api/token/
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "yourpassword"
+}
+
+### Refresh JWT Token
+POST http://localhost:8000/api/token/refresh/
+Content-Type: application/json
+
+{
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyNDM0Nzk0OSwiaWF0IjoxNzI0MjYxNTQ5LCJqdGkiOiI5NGEwZjc0ZDU1YTI0ZTU2OWEyYjQ1YjkyMjg2YzNlZCIsInVzZXJfaWQiOjE4fQ.tRQJFADIAWEavv1MMRuxZv5tHSmODCVel7zc8wpf2NM"
+}
+
+### Refresh JWT Token
+POST http://localhost:8000/api/token/verify/
+Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0MjYyMzA1LCJpYXQiOjE3MjQyNjE1NDksImp0aSI6IjNhYTg0YWRlNTc3NDQxMjJhY2E3M2Q3MThhZjg5MWE2IiwidXNlcl9pZCI6MTh9.LXCDfmAqeS5eR1M02eah4IjPNAZ4a0lIhVr-pZdONg8"
 }
 
