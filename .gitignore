@@ -9,5 +9,5 @@ media/
 .vscode/*
 
 # test images
-/ztestimages
+/ztestdata
 /media
