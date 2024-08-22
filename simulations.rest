@@ -12,7 +12,7 @@ Content-Type: application/json
 ### Add simulations
 POST http://localhost:8000/sim/add_sim/
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0MzMyMzc1LCJpYXQiOjE3MjQzMjkzNzUsImp0aSI6ImNlY2RlNmFhZGNkMTRmM2U5NWU1ZTliODk2OWJlZmNkIiwidXNlcl9pZCI6Mn0.T3NtkqYObkxBMdFIyDoXYXmraOxwToD4W9tImIH5uH8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0MzM3Njg2LCJpYXQiOjE3MjQzMzQ2ODYsImp0aSI6ImVlMmQ2ZDRmOTM0ZDQxOTBhOTA5YzQ5MTE1ZTA3ZjlkIiwidXNlcl9pZCI6Mn0.JkJh5OZA_5nC9S8FMfJvu09fjum0HLM7kr-wNOSr2GM
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="title"
@@ -46,9 +46,9 @@ Content-Type: application/zip
 
 
 ### update simulations
-POST http://localhost:8000/sim/update_sim/52
+POST http://localhost:8000/sim/update_sim/56
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0MzMyMzc1LCJpYXQiOjE3MjQzMjkzNzUsImp0aSI6ImNlY2RlNmFhZGNkMTRmM2U5NWU1ZTliODk2OWJlZmNkIiwidXNlcl9pZCI6Mn0.T3NtkqYObkxBMdFIyDoXYXmraOxwToD4W9tImIH5uH8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0MzM3Njg2LCJpYXQiOjE3MjQzMzQ2ODYsImp0aSI6ImVlMmQ2ZDRmOTM0ZDQxOTBhOTA5YzQ5MTE1ZTA3ZjlkIiwidXNlcl9pZCI6Mn0.JkJh5OZA_5nC9S8FMfJvu09fjum0HLM7kr-wNOSr2GM
 
 Content-Disposition: form-data; name="zip_photos"; filename="sim2.zip"
 Content-Type: application/zip

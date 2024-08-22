@@ -24,4 +24,7 @@ urlpatterns = [
     path('tester/',include('databaseTester.urls')),
     path('siteUser/',include('siteUser.urls')),
     path('sim/',include('simulations.urls')),
+    path('comment/',include('userComments.urls')),
+    path('subComment/',include('subComments.urls')),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
