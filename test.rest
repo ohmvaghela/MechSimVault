@@ -1,3 +1,8 @@
+### get users
+GET http://localhost:8000/siteUser/get_users
+Accept: application/json
+
+
 ### Create 
 POST http://localhost:8000/siteUser/create_user/
 Content-Type: application/json
@@ -14,16 +19,13 @@ Content-Type: application/json
   "skills": "Python, Django"
 }
 
-### get users
-GET http://localhost:8000/siteUser/get_users
-Accept: application/json
 
 ### login 
 POST http://localhost:8000/siteUser/login_user/
 Content-Type: application/json
 
 {
-  "email":"newuser@example.com",
+  "email":"newuser1@example.com",
   "password":"ohm123ohm"
 }
 
