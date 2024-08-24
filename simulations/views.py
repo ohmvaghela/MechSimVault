@@ -26,6 +26,12 @@ class GetSimsByID(APIView):
     serializer = SimulationSerializer(sims,many=True)
     return Response(serializer.data,status=status.HTTP_200_OK)
 
+class GetSimBySimId(APIView):
+  def get(self,request,pk):
+    simulation = Simulation.objects.get(pk=pk)
+    serializer = SimulationSerializer(simulation)
+    return Response(serializer.data,status=status.HTTP_200_OK)
+
 class AddSimulation(APIView):
   authentication_classes=[JWTAuthentication]
   permission_classes=[IsAuthenticated]

@@ -15,6 +15,12 @@ class SiteUserList(APIView):
     serializer = SiteUserSerializer(users, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
+class SiteUserById(APIView):
+  def get(self,request,pk):
+    user = SiteUser.objects.get(pk=pk)
+    serializer = SiteUserSerializer(user)
+    return Response(serializer.data,status=status.HTTP_200_OK)
+
 class SiteUserCreate(APIView):
   def post(self,request):
     serializer = SiteUserCreateSerializer(data = request.data)
@@ -51,12 +57,15 @@ class SiteUserLogin(APIView):
       refresh = RefreshToken.for_user(user)
       access_token = str(refresh.access_token)
       refresh_token = str(refresh)      
-      response =  Response({
-        "message": "Login successful", 
-        "user": user.email,
-        "access_token": access_token,
-      },
-      status=status.HTTP_200_OK)
+      
+      user_data = SiteUserSerializer(user).data
+      
+      response = Response({
+          "message": "Login successful",
+          "user": user_data,
+          "access_token": access_token,
+      }, status=status.HTTP_200_OK)
+            
       response.set_cookie(
         key='refresh_token',
         value=refresh_token,
