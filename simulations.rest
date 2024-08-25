@@ -19,6 +19,12 @@ POST http://localhost:8000/sim/add_likes/2/2/
 
 Content-Type: application/json
 
+### get likes by sim
+GET http://localhost:8000/sim/get_likes_by_sim/1
+
+Content-Type: application/json
+
+
 ### Add simulations
 POST http://localhost:8000/sim/add_sim/
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW

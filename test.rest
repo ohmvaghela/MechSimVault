@@ -60,7 +60,6 @@ Content-Type: application/json
   "email": "user@example.com",
   "password": "yourpassword"
 }
-
 ### Refresh JWT Token
 POST http://localhost:8000/api/token/refresh/
 Content-Type: application/json
@@ -72,6 +71,14 @@ Content-Type: application/json
 ### Refresh JWT Token
 POST http://localhost:8000/api/token/verify/
 Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0NTk0MzQzLCJpYXQiOjE3MjQ1OTEzNDMsImp0aSI6IjQ3MjdiYThlMzE1OTRmZTBiMTNmNTI1MzYyODIwM2YwIiwidXNlcl9pZCI6MX0.PoXLXmJwdqLbzi1k6UqAvEIBe_C1dqEgSxyzL_klfPg"
+}
+### Refresh JWT Token
+POST http://localhost:8000/token_verifier/token_verify/
+Content-Type: application/json
+Cookie: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyNDY5MzcwMywiaWF0IjoxNzI0NjA3MzAzLCJqdGkiOiIzNjhmZTA4MjVjNGI0ODY1OWY3MTliN2IyYTY3OGJhNyIsInVzZXJfaWQiOjF9.S2ZMXhTu2Mkh0DhurYW2l5NMYTd4tXpIgJh2-nIr_uA
 
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0NTk0MzQzLCJpYXQiOjE3MjQ1OTEzNDMsImp0aSI6IjQ3MjdiYThlMzE1OTRmZTBiMTNmNTI1MzYyODIwM2YwIiwidXNlcl9pZCI6MX0.PoXLXmJwdqLbzi1k6UqAvEIBe_C1dqEgSxyzL_klfPg"

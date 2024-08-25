@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
-from .models import Simulation
+from .models import Simulation,Likes
 from .serializers import SimulationSerializer,SimulationUpdateSerializer,LikesSerializer
 from siteUser.models import SiteUser
 from rest_framework.permissions import IsAuthenticated
@@ -58,6 +58,16 @@ class GetSimsByID(APIView):
             return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class GetLikesBySim(APIView):
+  def get(self,request,sim_id):
+    try:
+      likes = Likes.objects.filter(sim_id=sim_id).count()
+      return Response({'likes':likes}, status=status.HTTP_200_OK)
+    except Exception as e:
+      return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+      
 
 class AddLike(APIView):
     def post(self, request, user_id, sim_id):

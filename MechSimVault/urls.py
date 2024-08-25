@@ -32,5 +32,6 @@ urlpatterns = [
     path('subComment/',include('subComments.urls')),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-
+    path('token_verifier/',include('tokenVerifier.urls')),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
