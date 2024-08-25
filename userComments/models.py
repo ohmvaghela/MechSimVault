@@ -15,5 +15,3 @@ class Comments(models.Model):
   
   def __str__(self):
     return f"Comment on {self.simulation.title} on {self.user.email}" 
-  
-  

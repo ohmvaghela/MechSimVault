@@ -14,10 +14,15 @@ GET http://localhost:8000/sim/get_sim_by_simid/2
 
 Content-Type: application/json
 
+### add like
+POST http://localhost:8000/sim/add_likes/2/2/
+
+Content-Type: application/json
+
 ### Add simulations
 POST http://localhost:8000/sim/add_sim/
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0NTIyNjg1LCJpYXQiOjE3MjQ1MTk2ODUsImp0aSI6ImViZjNlMGMyNjc2ZTQ2ZWZhNjNiNjRiNmJmYmUyZWRiIiwidXNlcl9pZCI6MX0.TPliPOPW9iWKnxtMh_vQx1eW2DylRChbz30YQmRiekY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0NjA0NzI1LCJpYXQiOjE3MjQ2MDE3MjUsImp0aSI6ImMzZjJmMmI0NTQ4YTRhNzM5ODgwNTAyOGQ4ODI1MDI1IiwidXNlcl9pZCI6Mn0.gdrWAmAFBC0oLqHKP0RiC2T9LAFGvzKpPccHm5UCqv8
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="title"

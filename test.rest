@@ -30,7 +30,7 @@ POST http://localhost:8000/siteUser/login_user/
 Content-Type: application/json
 
 {
-  "email":"newuser@example.com",
+  "email":"newuser1@example.com",
   "password":"ohm123ohm"
 }
 
@@ -66,7 +66,7 @@ POST http://localhost:8000/api/token/refresh/
 Content-Type: application/json
 
 {
-  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyNDM0Nzk0OSwiaWF0IjoxNzI0MjYxNTQ5LCJqdGkiOiI5NGEwZjc0ZDU1YTI0ZTU2OWEyYjQ1YjkyMjg2YzNlZCIsInVzZXJfaWQiOjE4fQ.tRQJFADIAWEavv1MMRuxZv5tHSmODCVel7zc8wpf2NM"
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyNDY3OTM0NCwiaWF0IjoxNzI0NTkyOTQ0LCJqdGkiOiI3ZTRjMWJlZGE4MDc0NGViYjFiNWFjNDAyYWY2M2RhZSIsInVzZXJfaWQiOjF9.dHFg_ooRQL84bIDLH6_OJMwpF2I4pfgZ-KzlzzoC4p0"
 }
 
 ### Refresh JWT Token
@@ -74,6 +74,6 @@ POST http://localhost:8000/api/token/verify/
 Content-Type: application/json
 
 {
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0MjYyMzA1LCJpYXQiOjE3MjQyNjE1NDksImp0aSI6IjNhYTg0YWRlNTc3NDQxMjJhY2E3M2Q3MThhZjg5MWE2IiwidXNlcl9pZCI6MTh9.LXCDfmAqeS5eR1M02eah4IjPNAZ4a0lIhVr-pZdONg8"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0NTk0MzQzLCJpYXQiOjE3MjQ1OTEzNDMsImp0aSI6IjQ3MjdiYThlMzE1OTRmZTBiMTNmNTI1MzYyODIwM2YwIiwidXNlcl9pZCI6MX0.PoXLXmJwdqLbzi1k6UqAvEIBe_C1dqEgSxyzL_klfPg"
 }
 

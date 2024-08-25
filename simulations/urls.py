@@ -8,4 +8,5 @@ urlpatterns = [
   path("get_sim/",views.GetSims.as_view(),name="get-sim"),
   path("get_sim_by_id/<int:pk>",views.GetSimsByID.as_view(),name="get-sim-by-id"),
   path("get_sim_by_simid/<int:pk>",views.GetSimBySimId.as_view(),name="get-sim-by-simid"),
+  path("add_likes/<int:user_id>/<int:sim_id>/",views.AddLike.as_view(),name="add-likes"),
 ]

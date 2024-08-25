@@ -7,7 +7,7 @@ from django.conf import settings
 class Simulation(models.Model):
     user_id = models.ForeignKey("siteUser.SiteUser", verbose_name="Site User", on_delete=models.CASCADE)
     upload_date = models.DateField("upload data", default=timezone.now().date())
-    likes = models.IntegerField("likes", default=0)
+    # likes = models.IntegerField("likes", default=0)
     dislikes = models.IntegerField("dislikes", default=0)
     title = models.CharField("Simulation title", max_length=50, default="")
     description = models.CharField("Simulation title", max_length=250, default="")
@@ -18,7 +18,7 @@ class Simulation(models.Model):
 
     def save(self, *args, **kwargs):
       if not self.pk:
-        self.likes = 0
+        # self.likes = 0
         self.dislikes = 0
       super().save(*args, **kwargs)
 
@@ -48,3 +48,11 @@ class Simulation(models.Model):
 
     def __str__(self):
         return f"Simulation by {self.user_id.email} : {self.title}"
+
+  
+class Likes(models.Model):
+  user_id = models.ForeignKey("siteUser.SiteUser", verbose_name="site user", on_delete=models.CASCADE)
+  sim_id = models.ForeignKey("simulations.Simulation", verbose_name="simuation id", on_delete=models.CASCADE)
+  class Meta:
+    unique_together = ('user_id', 'sim_id')
+

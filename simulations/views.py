@@ -3,34 +3,96 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from .models import Simulation
-from .serializers import SimulationSerializer,SimulationUpdateSerializer
+from .serializers import SimulationSerializer,SimulationUpdateSerializer,LikesSerializer
 from siteUser.models import SiteUser
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Simulation,Likes
+from .serializers import SimulationSerializer
+
+
 class GetSims(APIView):
-  authentication_classes=[]
-  permission_classes=[]
-  
-  def get(self,request):
-    sims = Simulation.objects.all()
-    serializer = SimulationSerializer(sims, many=True)
+    authentication_classes = []
+    permission_classes = []
 
-    return Response(serializer.data,status=status.HTTP_200_OK)
+    def get(self, request):
+        try:
+            sims = Simulation.objects.all()
+            serializer = SimulationSerializer(sims, many=True)
+            sims_data = serializer.data
 
+            for sim in sims_data:
+                sim_id = sim['id']
+                try:
+                    likes_count = Likes.objects.filter(sim_id=sim_id).count()
+                    sim['likes'] = likes_count
+                except Likes.DoesNotExist:
+                    sim['likes'] = 0
+
+            return Response(sims_data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
 class GetSimsByID(APIView):
-  
-  def get(self,request,pk):
-    user = SiteUser.objects.get(pk=pk)
-    sims = Simulation.objects.filter(user_id=user)
-    serializer = SimulationSerializer(sims,many=True)
-    return Response(serializer.data,status=status.HTTP_200_OK)
+    def get(self, request, pk):
+        try:
+            user = SiteUser.objects.get(pk=pk)
+            sims = Simulation.objects.filter(user_id=user)
+            serializer = SimulationSerializer(sims, many=True)
+            sims_data = serializer.data
+
+            for sim in sims_data:
+                sim_id = sim['id']
+                try:
+                    likes_count = Likes.objects.filter(sim_id=sim_id).count()
+                    sim['likes'] = likes_count
+                except Likes.DoesNotExist:
+                    sim['likes'] = 0
+
+            return Response(sims_data, status=status.HTTP_200_OK)
+        except SiteUser.DoesNotExist:
+            return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class AddLike(APIView):
+    def post(self, request, user_id, sim_id):
+        data = {
+            'user_id': user_id,
+            'sim_id': sim_id
+        }
+
+        serializer = LikesSerializer(data=data)
+        if serializer.is_valid():
+            try:
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            except Exception as e:
+                return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
 
 class GetSimBySimId(APIView):
-  def get(self,request,pk):
-    simulation = Simulation.objects.get(pk=pk)
-    serializer = SimulationSerializer(simulation)
-    return Response(serializer.data,status=status.HTTP_200_OK)
+    def get(self, request, pk):
+        try:
+            simulation = Simulation.objects.get(pk=pk)
+            serializer = SimulationSerializer(simulation)
+            sim_data = serializer.data
+
+            try:
+                likes_count = Likes.objects.filter(sim_id=simulation.id).count()
+                sim_data['likes'] = likes_count
+            except Likes.DoesNotExist:
+                sim_data['likes'] = 0
+
+            return Response(sim_data, status=status.HTTP_200_OK)
+        except Simulation.DoesNotExist:
+            return Response({"error": "Simulation not found"}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class AddSimulation(APIView):
   authentication_classes=[JWTAuthentication]
