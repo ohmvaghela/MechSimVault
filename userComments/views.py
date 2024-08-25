@@ -15,13 +15,25 @@ class GetComments(APIView):
     serializer = CommentSerializer(data, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
+
 class GetCommentsBySim(APIView):
   def get(self, request, pk):
-    sim = Simulation.objects.get(pk=pk)
-    data = Comments.objects.filter(simulation=sim)
-    serializer = CommentSerializer(data, many=True)
+    try:
+      sim = Simulation.objects.get(pk=pk)
+    except Simulation.DoesNotExist:
+      return Response({"error": "Simulation not found"}, status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+      return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    try:
+      data = Comments.objects.filter(simulation=sim).order_by('-date')
+    except Exception as e:
+      return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
+    try:
+      serializer = CommentSerializer(data, many=True)
+    except Exception as e:
+      return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     return Response(serializer.data, status=status.HTTP_200_OK)
-
+            
 class CreateComment(APIView):
   authentication_classes = [JWTAuthentication]
   permission_classes = [IsAuthenticated]

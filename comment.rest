@@ -23,12 +23,12 @@ GET http://localhost:8000/comment/get_comments/
 Content-Type: application/json
 
 ### Get comments by id
-GET http://localhost:8000/comment/get_comments_by_sim/52/
+GET http://localhost:8000/comment/get_comments_by_sim/1
 Content-Type: application/json
 
 ### Get comments by sim
-POST http://localhost:8000/comment/add_comment/52/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0MzQzNDYyLCJpYXQiOjE3MjQzNDA0NjIsImp0aSI6ImI3NjEyZDdlZjg3ZjRmNTJhZmZjMTdkODZiYjg1YTY0IiwidXNlcl9pZCI6Mn0.05IJpLWS10cHTsHG3GDgkxaMG35pgyuu5GT7aIR5_34
+POST http://localhost:8000/comment/add_comment/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0NTY3MzU2LCJpYXQiOjE3MjQ1NjQzNTYsImp0aSI6ImZmZGU3OGM4MTNiMTQ1NTk5MDAzNTc5MDBhMjAyYTM2IiwidXNlcl9pZCI6Mn0.HfOV_r4V1ZBsEJJzuDaThECkgSun5xIHnv6AIlJ8raA
 Content-Type: application/json
 
 {
