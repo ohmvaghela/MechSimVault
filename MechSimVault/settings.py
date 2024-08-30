@@ -1,15 +1,19 @@
 from pathlib import Path
-# import os
 from datetime import timedelta
 import dj_database_url
+import environ
 
+env = environ.Env()
 BASE_DIR = Path(__file__).resolve().parent.parent
+environ.Env.read_env(env_file=str(BASE_DIR / '.env'))
+# print('Base dir', BASE_DIR)
+# print("SECRET_KEY:", env('SECRET_KEY'))
+# print("ALLOWED_HOSTS:", env.list('ALLOWED_HOSTS'))
+SECRET_KEY = env('SECRET_KEY')
 
-SECRET_KEY = 'django-insecure-!7&aq!#k$7+6vg^g)r(5#5_-@sm5&0be1anjiz7(sib@mt+0+@'
+DEBUG = env.bool('DEBUG', default=False)
 
-DEBUG = True
-
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1'])
 
 AUTH_USER_MODEL = "siteUser.SiteUser"
 
@@ -52,16 +56,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-]
+CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=['http://localhost:3000'])
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = [
     'auth-token',
     'Content-Type',
     'authorization',
-
 ]
 
 ROOT_URLCONF = 'MechSimVault.urls'
@@ -84,23 +85,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'MechSimVault.wsgi.application'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'if0_37210959_mech_sim_vault_database',
-#         'HOST':'sql103.infinityfree.com',
-#         'PORT':'3306',
-#         'USER':'root',
-#         'PASSWORD':'giPZVPU2gwq9j7a'
-#     }
-# }
-
+# Use the appropriate database URL based on your environment
 DATABASES = {
-    # if local host
-    # 'default': dj_database_url.config(default='postgresql://mech_sim_vault_user:b2s3wK1puEcY2Kvx7UCdjyA2js9saR6a@dpg-cr8svpt6l47c73bocem0-a.singapore-postgres.render.com/mech_sim_vault')
-    # for render
-    'default': dj_database_url.config(default='postgresql://mech_sim_vault_user:b2s3wK1puEcY2Kvx7UCdjyA2js9saR6a@dpg-cr8svpt6l47c73bocem0-a/mech_sim_vault')
+    'default': dj_database_url.config(default=env('DATABASE_URL'))
 }
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -129,8 +118,6 @@ STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 STATIC_ROOT = BASE_DIR/'assets'
 MEDIA_ROOT = BASE_DIR/'media'
-
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 STATICFILES_DIRS = [
     BASE_DIR/"static"
