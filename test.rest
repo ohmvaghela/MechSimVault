@@ -11,7 +11,7 @@ POST http://localhost:8000/siteUser/create_user/
 Content-Type: application/json
 
 {
-  "email": "newuser@example.com",
+  "email": "newuser2@example.com",
   "password": "ohm123ohm",
   "full_name": "New User",
   "bio": "This is a new user.",

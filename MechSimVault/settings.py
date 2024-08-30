@@ -1,6 +1,7 @@
 from pathlib import Path
-import os
+# import os
 from datetime import timedelta
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,7 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
-    'corsheaders',  # Added corsheaders
+    'corsheaders', 
     'siteUser',
     'userComments',
     'subComments',
@@ -68,7 +69,7 @@ ROOT_URLCONF = 'MechSimVault.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [BASE_DIR/'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,17 +84,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'MechSimVault.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'vault',
-        'HOST':'127.0.0.1',
-        'PORT':'3306',
-        'USER':'root',
-        'PASSWORD':'ohm123ohm'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'if0_37210959_mech_sim_vault_database',
+#         'HOST':'sql103.infinityfree.com',
+#         'PORT':'3306',
+#         'USER':'root',
+#         'PASSWORD':'giPZVPU2gwq9j7a'
+#     }
+# }
 
+DATABASES = {
+    # if local host
+    # 'default': dj_database_url.config(default='postgresql://mech_sim_vault_user:b2s3wK1puEcY2Kvx7UCdjyA2js9saR6a@dpg-cr8svpt6l47c73bocem0-a.singapore-postgres.render.com/mech_sim_vault')
+    # for render
+    'default': dj_database_url.config(default='postgresql://mech_sim_vault_user:b2s3wK1puEcY2Kvx7UCdjyA2js9saR6a@dpg-cr8svpt6l47c73bocem0-a/mech_sim_vault')
+}
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -120,10 +127,13 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+STATIC_ROOT = BASE_DIR/'assets'
+MEDIA_ROOT = BASE_DIR/'media'
+
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,"static")
+    BASE_DIR/"static"
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

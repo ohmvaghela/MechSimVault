@@ -18,7 +18,7 @@ class SiteUserCreateSerializer(serializers.ModelSerializer):
   class Meta:
     model = SiteUser
     fields = [
-        'profile_picture', 'email', 'password', 'full_name', 
+        'id','profile_picture', 'email', 'password', 'full_name', 
         'bio', 'institution', 'role', 'country', 'contact_info', 
         'skills'
     ]
