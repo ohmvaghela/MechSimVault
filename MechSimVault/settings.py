@@ -62,6 +62,7 @@ CORS_ALLOW_HEADERS = [
     'auth-token',
     'Content-Type',
     'authorization',
+    'Access-Control-Allow-Origin',
 ]
 
 ROOT_URLCONF = 'MechSimVault.urls'
