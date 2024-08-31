@@ -1,3 +1,8 @@
+### get path
+GET http://localhost:8000/paths/list-files
+Accept: application/json
+
+
 ### get users
 GET http://localhost:8000/siteUser/get_users
 Accept: application/json

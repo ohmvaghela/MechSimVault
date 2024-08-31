@@ -30,6 +30,7 @@ urlpatterns = [
     path('sim/',include('simulations.urls')),
     path('comment/',include('userComments.urls')),
     path('subComment/',include('subComments.urls')),
+    path('paths/',include('fileTest.urls')),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('token_verifier/',include('tokenVerifier.urls')),
