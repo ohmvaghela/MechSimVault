@@ -6,9 +6,7 @@ import environ
 env = environ.Env()
 BASE_DIR = Path(__file__).resolve().parent.parent
 environ.Env.read_env(env_file=str(BASE_DIR / '.env'))
-# print('Base dir', BASE_DIR)
-# print("SECRET_KEY:", env('SECRET_KEY'))
-# print("ALLOWED_HOSTS:", env.list('ALLOWED_HOSTS'))
+
 SECRET_KEY = env('SECRET_KEY')
 
 DEBUG = env.bool('DEBUG', default=False)
@@ -48,6 +46,7 @@ SIMPLE_JWT = {
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # Ensure this is at the top
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -122,5 +121,6 @@ MEDIA_ROOT = BASE_DIR/'media'
 STATICFILES_DIRS = [
     BASE_DIR/"static"
 ]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
