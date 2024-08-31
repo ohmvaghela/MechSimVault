@@ -6,14 +6,12 @@ import environ
 env = environ.Env()
 BASE_DIR = Path(__file__).resolve().parent.parent
 environ.Env.read_env(env_file=str(BASE_DIR / '.env'))
-# print('Base dir', BASE_DIR)
-# print("SECRET_KEY:", env('SECRET_KEY'))
-# print("ALLOWED_HOSTS:", env.list('ALLOWED_HOSTS'))
+
 SECRET_KEY = env('SECRET_KEY')
 
 DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1'])
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1', 'mechsimvault.onrender.com'])
 
 AUTH_USER_MODEL = "siteUser.SiteUser"
 
@@ -56,13 +54,17 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=['http://localhost:3000'])
+CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=[
+    'https://mech-sim-vault-client.onrender.com',
+    'http://localhost:3000'
+])
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = [
     'auth-token',
     'Content-Type',
     'authorization',
+    'Access-Control-Allow-Origin',
 ]
 
 ROOT_URLCONF = 'MechSimVault.urls'
@@ -85,7 +87,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'MechSimVault.wsgi.application'
 
-# Use the appropriate database URL based on your environment
 DATABASES = {
     'default': dj_database_url.config(default=env('DATABASE_URL'))
 }
@@ -113,14 +114,13 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
-
+STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = BASE_DIR/'assets'
-MEDIA_ROOT = BASE_DIR/'media'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 STATICFILES_DIRS = [
-    BASE_DIR/"static"
+    BASE_DIR / 'static',
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

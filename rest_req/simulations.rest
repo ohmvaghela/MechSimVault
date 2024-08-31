@@ -1,0 +1,81 @@
+
+### Get simulations
+GET https://mechsimvault.onrender.com/sim/get_sim/
+
+Content-Type: application/json
+
+### Get simulations by ID
+GET https://mechsimvault.onrender.com/sim/get_sim_by_id/1
+
+Content-Type: application/json
+
+### Get sim by sim id
+GET https://mechsimvault.onrender.com/sim/get_sim_by_simid/2
+
+Content-Type: application/json
+
+### add like
+POST https://mechsimvault.onrender.com/sim/add_likes/2/2/
+
+Content-Type: application/json
+
+### get likes by sim
+GET https://mechsimvault.onrender.com/sim/get_likes_by_sim/1
+
+Content-Type: application/json
+
+
+### Add simulations
+POST https://mechsimvault.onrender.com/sim/add_sim/
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0NjA0NzI1LCJpYXQiOjE3MjQ2MDE3MjUsImp0aSI6ImMzZjJmMmI0NTQ4YTRhNzM5ODgwNTAyOGQ4ODI1MDI1IiwidXNlcl9pZCI6Mn0.gdrWAmAFBC0oLqHKP0RiC2T9LAFGvzKpPccHm5UCqv8
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="title"
+
+first simulation
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="description"
+
+first simulation description
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Softwares"
+
+ansys
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="simulation_image"; filename="sim1_image.png"
+Content-Type: image/png
+
+< ./ztestdata/photos/sim1_image.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="zip_file"; filename="sim1.zip"
+Content-Type: application/zip
+
+< ./ztestdata/sims/sim1.zip
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="zip_photos"; filename="sim1.zip"
+Content-Type: application/zip
+
+< ./ztestdata/sims/sim1.zip
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+
+
+
+### update simulations
+POST https://mechsimvault.onrender.com/sim/update_sim/56
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0MzM3Njg2LCJpYXQiOjE3MjQzMzQ2ODYsImp0aSI6ImVlMmQ2ZDRmOTM0ZDQxOTBhOTA5YzQ5MTE1ZTA3ZjlkIiwidXNlcl9pZCI6Mn0.JkJh5OZA_5nC9S8FMfJvu09fjum0HLM7kr-wNOSr2GM
+
+Content-Disposition: form-data; name="zip_photos"; filename="sim2.zip"
+Content-Type: application/zip
+
+< ./ztestdata/sims/sim2.zip
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+
+### delete simulation
+POST https://mechsimvault.onrender.com/sim/delete_sim/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1MDg2MzU0LCJpYXQiOjE3MjUwODQ1NTQsImp0aSI6IjEyYmFlYjM2NTYxYjRlMzI5Y2U5ZTJjYzc4Nzg5ZDJhIiwidXNlcl9pZCI6NX0.168-e5FyoD3KKz_KDgbsQaOfAjFZrCqc3wZL8xNw9Cc
+
+Content-Type: application/json
+
+

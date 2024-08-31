@@ -1,0 +1,98 @@
+### Check if the image is stored
+GET https://mechsimvault.onrender.com/media/profile_picture/base.jpg
+Content-Type: image/jpeg
+
+### Check if the image is stored
+GET https://mechsimvault.onrender.com/paths/list-files
+Content-Type: application/json
+
+### Check file permissions
+GET https://mechsimvault.onrender.com/paths/check-permissions/
+Content-Type: application/json
+
+### get users
+GET https://mechsimvault.onrender.com/siteUser/get_users
+Accept: application/json
+
+### get user by id
+GET https://mechsimvault.onrender.com/siteUser/get_users_by_id/1/
+Accept: application/json
+
+### Create 
+POST https://mechsimvault.onrender.com/siteUser/create_user/
+Content-Type: application/json
+
+{
+  "email": "newuser6@example.com",
+  "password": "ohm123ohm",
+  "full_name": "New User",
+  "bio": "This is a new user.",
+  "institution": "Example Institution",
+  "role": "Developer",
+  "country": "INDIA",
+  "contact_info": "1234567890",
+  "skills": "Python, Django"
+}
+
+
+
+
+### login 
+POST https://mechsimvault.onrender.com/siteUser/login_user/
+Content-Type: application/json
+
+{
+  "email":"newuser5@example.com",
+  "password":"ohm123ohm"
+}
+
+### update data
+POST https://mechsimvault.onrender.com/siteUser/update/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0MjY1Mjg3LCJpYXQiOjE3MjQyNjQ5ODcsImp0aSI6Ijc5NDZlNTc2ZTlhYTQ0MGE4N2RlZDhhZWVjMDk3OWI4IiwidXNlcl9pZCI6N30.c4VMFGNKTBHD1ddFCEcAEvUpsdcL9fKd1Ac7D1rAm7o
+Content-Type: application/json
+
+{
+  "full_name":"ohm N vaghela"
+}
+
+### update password
+POST https://mechsimvault.onrender.com/siteUser/update_password/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0MjYzNzU4LCJpYXQiOjE3MjQyNjM0NTgsImp0aSI6ImMyZDQzMjFhZmQzYzQ4ZTY4NjI4ZWI5OTdhZDNkYjQ5IiwidXNlcl9pZCI6N30.vkF8_-j6SynkVmsuGIvs7fabh643WBQSHX4agv5G5l4
+Content-Type: application/json
+
+{
+  "password":"ohm123ohm"
+}
+
+### Obtain JWT Token
+POST https://mechsimvault.onrender.com/api/token/
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "yourpassword"
+}
+### Refresh JWT Token
+POST https://mechsimvault.onrender.com/api/token/refresh/
+Content-Type: application/json
+
+{
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyNDY3OTM0NCwiaWF0IjoxNzI0NTkyOTQ0LCJqdGkiOiI3ZTRjMWJlZGE4MDc0NGViYjFiNWFjNDAyYWY2M2RhZSIsInVzZXJfaWQiOjF9.dHFg_ooRQL84bIDLH6_OJMwpF2I4pfgZ-KzlzzoC4p0"
+}
+
+### Refresh JWT Token
+POST https://mechsimvault.onrender.com/api/token/verify/
+Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0NTk0MzQzLCJpYXQiOjE3MjQ1OTEzNDMsImp0aSI6IjQ3MjdiYThlMzE1OTRmZTBiMTNmNTI1MzYyODIwM2YwIiwidXNlcl9pZCI6MX0.PoXLXmJwdqLbzi1k6UqAvEIBe_C1dqEgSxyzL_klfPg"
+}
+### Refresh JWT Token
+POST https://mechsimvault.onrender.com/token_verifier/token_verify/
+Content-Type: application/json
+Cookie: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyNDY5MzcwMywiaWF0IjoxNzI0NjA3MzAzLCJqdGkiOiIzNjhmZTA4MjVjNGI0ODY1OWY3MTliN2IyYTY3OGJhNyIsInVzZXJfaWQiOjF9.S2ZMXhTu2Mkh0DhurYW2l5NMYTd4tXpIgJh2-nIr_uA
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0NTk0MzQzLCJpYXQiOjE3MjQ1OTEzNDMsImp0aSI6IjQ3MjdiYThlMzE1OTRmZTBiMTNmNTI1MzYyODIwM2YwIiwidXNlcl9pZCI6MX0.PoXLXmJwdqLbzi1k6UqAvEIBe_C1dqEgSxyzL_klfPg"
+}
+
