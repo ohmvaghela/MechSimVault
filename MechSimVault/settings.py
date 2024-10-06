@@ -11,7 +11,7 @@ SECRET_KEY = env('SECRET_KEY')
 
 DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1'])
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1', 'mechsimvault.onrender.com'])
 
 AUTH_USER_MODEL = "siteUser.SiteUser"
 
@@ -25,12 +25,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders', 
-    'siteUser',
-    'userComments',
-    'subComments',
-    'simulations',
-    'databaseTester',
-    'tokenVerifier',
+    'apps.siteUser',
+    'apps.simulations',
+    'apps.userComments',
+    'apps.subComments',
+    'apps.tokenVerifier',
 ]
 
 REST_FRAMEWORK = {
@@ -55,7 +54,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=['http://localhost:3000'])
+CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=[
+    'https://mech-sim-vault-client.onrender.com',
+    'http://localhost:3000'
+])
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = [
@@ -85,9 +87,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'MechSimVault.wsgi.application'
 
-# Use the appropriate database URL based on your environment
 DATABASES = {
-    'default': dj_database_url.config(default=env('DATABASE_URL'))
+  'default': {
+      'ENGINE': 'django.db.backends.sqlite3',
+      'NAME': BASE_DIR / 'db.sqlite3',
+  }
+    # 'default': dj_database_url.config(default=env('DATABASE_URL'))
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -113,14 +118,13 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
-
-MEDIA_URL = '/media/'
-STATIC_ROOT = BASE_DIR/'assets'
-MEDIA_ROOT = BASE_DIR/'media'
+STATIC_URL = 'media/static/'
+MEDIA_URL = 'media/media/'
+STATIC_ROOT = BASE_DIR / 'media/staticfiles'
+MEDIA_ROOT = BASE_DIR / 'media/media'
 
 STATICFILES_DIRS = [
-    BASE_DIR/"static"
+    BASE_DIR / 'media/static',
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
