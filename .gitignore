@@ -1,7 +1,6 @@
 **/__pycache__/** 
 */__pycache__/*
 db.sqlite3
-media/
 *.log
 *.pot
 *.pyc
@@ -13,6 +12,6 @@ db.sqlite3/
 
 # test images
 /ztestdata
-/media
 
+rest_req/
 .env
