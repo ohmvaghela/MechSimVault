@@ -25,12 +25,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders', 
-    'siteUser',
-    'userComments',
-    'subComments',
-    'simulations',
-    'databaseTester',
-    'tokenVerifier',
+    'apps.siteUser',
+    'apps.simulations',
+    'apps.userComments',
+    'apps.subComments',
+    'apps.tokenVerifier',
 ]
 
 REST_FRAMEWORK = {
@@ -88,7 +87,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'MechSimVault.wsgi.application'
 
 DATABASES = {
-    'default': dj_database_url.config(default=env('DATABASE_URL'))
+  'default': {
+      'ENGINE': 'django.db.backends.sqlite3',
+      'NAME': BASE_DIR / 'db.sqlite3',
+  }
+    # 'default': dj_database_url.config(default=env('DATABASE_URL'))
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -114,13 +117,13 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-MEDIA_ROOT = BASE_DIR / 'media'
+STATIC_URL = 'media/static/'
+MEDIA_URL = 'media/media/'
+STATIC_ROOT = BASE_DIR / 'media/staticfiles'
+MEDIA_ROOT = BASE_DIR / 'media/media'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    BASE_DIR / 'media/static',
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

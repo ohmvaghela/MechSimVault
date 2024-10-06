@@ -25,13 +25,12 @@ from rest_framework_simplejwt.views import (
 )
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('tester/',include('databaseTester.urls')),
-    path('siteUser/',include('siteUser.urls')),
-    path('sim/',include('simulations.urls')),
-    path('comment/',include('userComments.urls')),
-    path('subComment/',include('subComments.urls')),
+    path('siteUser/',include('apps.siteUser.urls')),
+    path('sim/',include('apps.simulations.urls')),
+    path('comment/',include('apps.userComments.urls')),
+    path('subComment/',include('apps.subComments.urls')),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('token_verifier/',include('tokenVerifier.urls')),
+    path('token_verifier/',include('apps.tokenVerifier.urls')),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
