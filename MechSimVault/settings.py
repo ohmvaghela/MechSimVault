@@ -87,13 +87,26 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'MechSimVault.wsgi.application'
 
+# db.sqlite3
+# DATABASES = {
+#   'default': {
+#       'ENGINE': 'django.db.backends.sqlite3',
+#       'NAME': BASE_DIR / 'db.sqlite3',
+#   }
+#     # 'default': dj_database_url.config(default=env('DATABASE_URL'))
+# }
+
 DATABASES = {
-  'default': {
-      'ENGINE': 'django.db.backends.sqlite3',
-      'NAME': BASE_DIR / 'db.sqlite3',
-  }
-    # 'default': dj_database_url.config(default=env('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': env('MYSQL_DATABASE'),
+        'USER': env('MYSQL_USER'),
+        'PASSWORD': env('MYSQL_PASSWORD'),
+        # 'HOST': env('MYSQL_HOST'),
+        'PORT': env('MYSQL_PORT'),
+    }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {

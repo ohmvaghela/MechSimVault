@@ -1,7 +1,9 @@
 #!/bin/bash
 
+url=http://localhost:8000
+
 # Perform login and extract tokens
-login_response=$(curl -s -D - -X POST http://localhost:8000/siteUser/login_user/ \
+login_response=$(curl -s -D - -X POST $url/siteUser/login_user/ \
   -H "Content-Type: application/json" \
   -d '{"email":"newuser1@example.com", "password":"ohm123ohm"}')
 
@@ -17,7 +19,7 @@ if [ "$login_status" -eq 200 ]; then
   echo "- Login successful."
 
   # Perform the update data request using the access_token
-  update_response=$(curl -s -w "\n%{http_code}" -X POST http://localhost:8000/siteUser/update/ \
+  update_response=$(curl -s -w "\n%{http_code}" -X POST $url/siteUser/update/ \
     -H "Authorization: Bearer $access_token" \
     -H "Content-Type: application/json" \
     -d '{"full_name":"ohm N vaghela"}')
@@ -33,7 +35,7 @@ if [ "$login_status" -eq 200 ]; then
   fi
 
   # Refresh JWT Token
-  refresh_response=$(curl -s -w "\n%{http_code}" -X POST http://localhost:8000/api/token/refresh/ \
+  refresh_response=$(curl -s -w "\n%{http_code}" -X POST $url/api/token/refresh/ \
     -H "Content-Type: application/json" \
     -d "{\"refresh\": \"$refresh_token\"}")
 
@@ -50,7 +52,7 @@ if [ "$login_status" -eq 200 ]; then
   fi
 
   # Get simulations
-  simulations_response=$(curl -s -w "\n%{http_code}" -X GET http://localhost:8000/sim/get_sim/ \
+  simulations_response=$(curl -s -w "\n%{http_code}" -X GET $url/sim/get_sim/ \
     -H "Content-Type: application/json")
 
   simulations_status=$(echo "$simulations_response" | tail -n1)
@@ -64,7 +66,7 @@ if [ "$login_status" -eq 200 ]; then
   fi
 
   # Get simulations by ID
-  sim_by_id_response=$(curl -s -w "\n%{http_code}" -X GET http://localhost:8000/sim/get_sim_by_id/1 \
+  sim_by_id_response=$(curl -s -w "\n%{http_code}" -X GET $url/sim/get_sim_by_id/1 \
     -H "Content-Type: application/json")
 
   sim_by_id_status=$(echo "$sim_by_id_response" | tail -n1)
@@ -78,7 +80,7 @@ if [ "$login_status" -eq 200 ]; then
   fi
 
   # Add simulations
-  add_sim_response=$(curl -s -w "\n%{http_code}" -X POST http://localhost:8000/sim/add_sim/ \
+  add_sim_response=$(curl -s -w "\n%{http_code}" -X POST $url/sim/add_sim/ \
     -H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" \
     -H "Authorization: Bearer $access_token" \
     -F "title=first simulation" \

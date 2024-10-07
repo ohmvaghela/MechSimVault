@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mech-server-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mech-server
+  template:
+    metadata:
+      labels:
+        app: mech-server
+    spec:
+      containers:
+      - name: mech-server
+        image: ohmv10/mech-server:v1.1
+        ports:
+        - containerPort: 8000
+        env:
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: mech-server-secret
+              key: SECRET_KEY
+        - name: DEBUG
+          valueFrom:
+            configMapKeyRef:
+              name: mech-server-config
+              key: DEBUG
+        - name: ALLOWED_HOSTS
+          valueFrom:
+            configMapKeyRef:
+              name: mech-server-config
+              key: ALLOWED_HOSTS
+        - name: DATABASE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: mech-server-config
+              key: DATABASE_URL
+        - name: CORS_ALLOWED_ORIGINS
+          valueFrom:
+            configMapKeyRef:
+              name: mech-server-config
+              key: CORS_ALLOWED_ORIGINS
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mech-server-service
+spec:
+  selector:
+    app: mech-server
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+  type: LoadBalancer
+

@@ -1,0 +1,129 @@
+
+
+.Navbar {
+  display: flex;
+  background-color: #495057;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  flex-direction: row;
+  justify-content: space-between; /* Center children horizontally */
+  align-items: center; /* Center children vertically */
+  position: sticky; /* Make the navbar sticky */
+  top: 0; /* Stick the navbar to the top */
+  z-index: 1000; /* Ensure the navbar is above other content */
+}
+
+.HomeButtonLink{
+  text-decoration: none;
+  /* color */
+}
+
+.HomeButton {
+  display: block;
+  font-size: x-large;
+  margin: 10px;
+  margin-left: 20px;
+  font-weight: 500;
+  /* background-color: aliceblue; */
+}
+
+.col1 {
+  color: #ced4da;
+}
+
+.col2 {
+  color: #212529;
+}
+
+.Logo {
+  height: 80px;
+}
+
+.HomeButton:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.Nav-seach-holder {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+input.Nav-search {
+  padding: 5px;
+  font-size: large;
+  background-color: aliceblue;
+  border: none;
+}
+
+input.Nav-search:focus {
+  outline: none;
+  border: none;
+}
+
+div.Nav-search {
+  padding: 5px;
+  font-size: large;
+  background-color: aliceblue;
+}
+
+div.Nav-search:hover {
+  cursor: pointer;
+}
+.SiteUserLink{
+  text-decoration: none;
+}
+
+.SiteUser {
+  font-size: x-large;
+  padding: 10px;
+  margin-right: 40px;
+  background-color: #6c757d;
+  border-radius: 3rem;
+  color: black;
+}
+
+.SiteUser:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.SortDrop {
+  margin: 5px;
+}
+
+
+
+.ProfileButton{
+  width: 165px;
+  height: 56px;
+  display: flex;
+  margin-right: 40px;
+  justify-content: center;
+  background-color: none;
+}
+.ProfileButton:hover{
+  cursor: pointer;
+}
+.Profile-logo-image{
+  height: 56px;
+  width: 56px;
+  object-fit: cover;
+
+  border-radius: 5rem;
+}
+
+.Logout-button {
+  background-color: transparent !important;
+  border: none;
+  color: inherit; 
+}
+#ProfileButton-Toggle {
+  background-color: transparent !important;
+  border: none;
+}
+
+
+/* Pallate : F8F9FA E9ECEF DEE2E6 CED4DA ADB5BD 6C757D 495057 343A40 212529 */

@@ -1,0 +1,60 @@
+/*
+Pallate : F8F9FA E9ECEF DEE2E6 CED4DA ADB5BD 6C757D 495057 343A40 212529
+*/
+.User-Details{
+  width: 1000px;
+  margin: auto;
+  background-color: #E9ECEF;
+  display: grid;
+  grid-template-columns: 300px auto 200px;
+  grid-template-rows: auto;
+  column-gap: 20px;
+}
+.User-Image{
+  padding: 30px;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
+}
+.User-Text-Details{
+  grid-column: 2/3;
+  grid-row: 1/2;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+.User-Page-User-Name{
+  font-size: xx-large;
+  margin-bottom: 20px;
+}
+.User-Page-Desc{
+  font-size: large;
+  margin-right: 50px;  
+  margin-bottom: 20px;
+}
+.User-Page-Softwares{
+  font-size: large;
+  margin-right: 50px;  
+}
+.User-Page-Upload{
+  grid-row: 1/2;
+  grid-column: 3/4;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: large;
+}
+.User-Page-Upload-Button{
+  font-weight: bold;
+  border: none;
+  background-color: rgb(128, 138, 134);
+  border-radius: 4rem;
+  padding: 15px;
+}
+.User-Page-Upload-Button:hover{
+  transform: scale(1.04);
+  cursor: pointer;
+}
