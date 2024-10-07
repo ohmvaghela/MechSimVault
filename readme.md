@@ -1,8 +1,9 @@
 <center>
 
-|||||
+<!-- |||||
 |-|-|-|-|
-| <img src="./readme_img/mysql-logo.svg" width=600/> | <img src="./readme_img/Django-Logo.png" width=1000/> | <img src="./readme_img/docker.svg" width=500/> | <img src="./readme_img/react-2.svg" width=500 /> |
+| <img src="./readme_img/mysql-logo.svg" width=600/> | <img src="./readme_img/Django-Logo.png" width=1000/> | <img src="./readme_img/docker.svg" width=500/> | <img src="./readme_img/react-2.svg" width=500 /> | -->
+<img src="./readme_img/mech.svg" width=400>
 
 # MechSimVault
 
