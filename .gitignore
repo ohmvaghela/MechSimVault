@@ -1,5 +1,6 @@
-**/__pycache__/** 
-*/__pycache__/*
+**/__pycache__/ 
+*/__pycache__/
+*/media/*
 db.sqlite3
 *.log
 *.pot
@@ -11,7 +12,7 @@ db.sqlite3/
 .vscode/*
 
 # test images
-/ztestdata# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+/ztestdata
 
 # dependencies
 **/node_modules

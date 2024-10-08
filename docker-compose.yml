@@ -8,18 +8,14 @@ services:
     environment:
       SECRET_KEY: django-insecure-!7&aq!#k$7+6vg^g)r(5#5_-@sm5&0be1anjiz7(sib@mt+0+@
       DEBUG: 'False'
-      ALLOWED_HOSTS: localhost,127.0.0.1,your-vercel-domain.vercel.app
+      ALLOWED_HOSTS: localhost,127.0.0.1
       DATABASE_URL: postgresql://mech_sim_vault_user:b2s3wK1puEcY2Kvx7UCdjyA2js9saR6a@dpg-cr8svpt6l47c73bocem0-a.singapore-postgres.render.com/mech_sim_vault
       CORS_ALLOWED_ORIGINS: http://localhost:3000
       MYSQL_DATABASE: mech_sim_db
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: password
+      MYSQL_USER: mechsimvault-server
+      MYSQL_PASSWORD: Ohm@42@42@42@
       MYSQL_HOST: mysql
       MYSQL_PORT: 3306
-    healthcheck:
-      test: ["CMD", "mysql", "-h", "localhost", "-u", "root", "-p password", "-e", "SELECT 1"]
-      timeout: 20s
-      retries: 10
     networks:
       - mech-net
 
@@ -30,18 +26,19 @@ services:
     networks:
       - mech-net
 
-  mysql:
+  mysql-test:
     image: mysql:9.0.1
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: mech_sim_db
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: password
+      MYSQL_USER: mechsimvault-server
+      MYSQL_PASSWORD: Ohm@42@42@42@
     ports:
       - "3306:3306"
     volumes:
-      - /home/docker-volume:/var/lib/mysql
+      - /home/ohm/docker-volume:/var/lib/mysql 
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - mech-net
 
