@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   mech-server:
-    image: ohmv10/mech-server:v1.2
+    image: ohmv10/mech-server:docker-compose
     ports:
       - "8000:8000"
     environment:

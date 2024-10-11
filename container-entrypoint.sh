@@ -1,15 +1,19 @@
 #!/bin/sh
 
-# Function to check if MySQL is running
-check_mysql() {
-  mysqladmin ping -h mysql -u root -ppassword > /dev/null 2>&1
-}
 
-# Wait for MySQL to be available
-until check_mysql; do
-  echo "Waiting for MySQL..."
-  sleep 2
-done
+#######################################
+## Use this only with docker compose ##
+#######################################
+# check_mysql() {
+#   mysqladmin ping -h mysql -u root -ppassword > /dev/null 2>&1
+# }
+
+# until check_mysql; do
+#   echo "Waiting for MySQL..."
+#   sleep 2
+# done
+
+#######################################
 
 echo "MySQL is up and running. Starting Django..."
 

@@ -2,9 +2,12 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mysql-pvc
+  labels:
+    app: mysql
 spec:
+  storageClassName: "mysql-storageclass"
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
-      storage: 1Gi
+      storage: 50Mi

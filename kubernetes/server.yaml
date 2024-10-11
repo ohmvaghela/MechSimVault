@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: mech-server
-        image: ohmv10/mech-server:v1.1
+        # image: ohmv10/mech-server:v1.2
+        image: ohmv10/mech-server:cluster.v1.0 
         ports:
         - containerPort: 8000
         env:
@@ -43,6 +44,18 @@ spec:
             configMapKeyRef:
               name: mech-server-config
               key: CORS_ALLOWED_ORIGINS
+        - name: MYSQL_DATABASE
+          value: mech_sim_db
+        - name: MYSQL_USER
+          value: mechsimvault-server
+        - name: MYSQL_PASSWORD
+          value: Ohm@42@42@42@
+        - name: MYSQL_HOST
+          value: mysql-service
+        - name: MYSQL_PORT
+          value: "3306"
+        command: ["sh","/MechSimVault/container-entrypoint.sh"]
+
 
 ---
 
@@ -57,5 +70,5 @@ spec:
     - protocol: TCP
       port: 8000
       targetPort: 8000
-  type: LoadBalancer
+  # type: LoadBalancer
 

@@ -77,6 +77,8 @@
   
 ## Running app locally using docker image 
 - Docker compose (They are running on custom bridge network)
+- Make sure "/home/docker-volume" exist and is empty and has appropriate permission
+- Then run docker compose up
 ```yaml
 version: '3.8'
 
