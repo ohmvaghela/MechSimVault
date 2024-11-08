@@ -17,7 +17,7 @@ path_and_rename = PathAndRename()
 
 class SiteUser(AbstractBaseUser, PermissionsMixin):
   # profile picture
-  profile_picture = models.ImageField(upload_to=path_and_rename, default='profile_picture/base.jpg', null=True, blank=True)  
+  profile_picture = models.ImageField(upload_to=path_and_rename, default='profile_picture/image.png', null=True, blank=True)  
   email = models.EmailField("email id", max_length=254, unique=True)
   is_superuser = models.BooleanField("is_superuser", default=False)
   full_name = models.CharField("full name", max_length=50, default="Default name")

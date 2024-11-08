@@ -28,7 +28,7 @@ class SiteUserCreateSerializer(serializers.ModelSerializer):
     user = SiteUser.objects.create_user(
       email=validated_data['email'],
       password=validated_data['password'],
-      profile_picture=validated_data.get('profile_picture', 'profile_picture/base.jpg'),
+      profile_picture=validated_data.get('profile_picture', 'profile_picture/image.png'),
       full_name=validated_data.get('full_name', 'Default name'),
       bio=validated_data.get('bio', ''),
       institution=validated_data.get('institution', ''),
