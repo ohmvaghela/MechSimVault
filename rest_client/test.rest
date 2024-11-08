@@ -19,7 +19,8 @@ GET http://localhost:8000/siteUser/get_users_by_id/1/
 Accept: application/json
 
 ### Create 
-POST http://localhost:8000/siteUser/create_user/
+# POST http://localhost:8001/siteUser/create_user/
+POST https://mechsimvault.backend.vibevaulttech.co.in/siteUser/create_user/
 Content-Type: application/json
 
 {

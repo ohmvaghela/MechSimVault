@@ -54,7 +54,10 @@
  
   ```bash
   sudo chmod +x unitTest.sh
-  ./unitTest.sh
+  ./unitTest.sh <url>
+  # example uses
+  ./unitTest.sh localhost:8000
+  ./unitTest.sh my.domain.name
   ```
 - If there is any issue with server it will popup
 - For other API calls check for APIs present in rest_client

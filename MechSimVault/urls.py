@@ -23,8 +23,11 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+from . import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('/', views.health_check, name='health_check'),
     path('siteUser/',include('apps.siteUser.urls')),
     path('sim/',include('apps.simulations.urls')),
     path('comment/',include('apps.userComments.urls')),

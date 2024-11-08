@@ -1,6 +1,6 @@
 #!/bin/bash
 
-url=http://localhost:8000
+url=$1
 
 # Perform login and extract tokens
 login_response=$(curl -s -D - -X POST $url/siteUser/login_user/ \

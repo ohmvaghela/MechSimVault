@@ -2,12 +2,13 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mysql
+  namespace: mech-server
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: mysql
   serviceName: "mysql-service"
-  replicas: 1
   template:
     metadata:
       labels:
@@ -64,6 +65,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mysql-service
+  namespace: mech-server
 spec:
   ports:
     - name: mysql

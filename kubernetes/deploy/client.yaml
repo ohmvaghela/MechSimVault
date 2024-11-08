@@ -2,7 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mech-client-deployment
+  namespace: mech-client
+  labels:
+    app: mech-client
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: mech-client
@@ -21,9 +25,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mech-client-service
+  namespace: mech-client
 spec:
   selector:
     app: mech-client
   ports:
-  - port: 3000
+  - protocol: TCP
+    port: 3000
     targetPort: 3000
+  type: NodePort

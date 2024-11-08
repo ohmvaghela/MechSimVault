@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  nginx-deploy
+  namespace: mech-server
+  labels:
+    app:  nginx-deploy
+spec:
+  selector:
+    matchLabels:
+      app: nginx-deploy
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  nginx-deploy
+    spec:
+      containers:
+      - name:  nginx-deploy
+        image:  nginx:latest
+        ports:
+        - containerPort:  80
+          name:  nginx-deploy
+        volumeMounts:
+        - name: django-media-pvc
+          mountPath: /usr/share/nginx/html/media
+        - name: nginx-cm
+          mountPath: /etc/nginx/conf.d/default.conf
+          subPath: default.conf
+      volumes:
+        - name: django-media-pvc
+          persistentVolumeClaim:
+            claimName: django-media-pvc
+        - name: nginx-cm
+          configMap:
+            name: nginx-cm   
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  namespace: mech-server
+spec:
+  selector:
+    app: nginx-deploy
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80

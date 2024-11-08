@@ -1,0 +1,20 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: backend-mech-mcrt
+  namespace: mech-server
+spec:
+  domains:
+    - mechsimvault.backend.vibevaulttech.co.in
+
+---
+
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: frontend-mech-mcrt
+  namespace: mech-client
+spec:
+  domains:
+    - mechsimvault.vibevaulttech.co.in
+

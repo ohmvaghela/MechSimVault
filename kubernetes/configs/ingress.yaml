@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mech-ingress
+  namespace: mech-server
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "mechsimvault-backend"
+    networking.gke.io/managed-certificates: backend-mech-mcrt
+    kubernetes.io/ingress.class: "gce" 
+spec:
+  rules:
+  - host: mechsimvault.backend.vibevaulttech.co.in
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-service
+            port:
+              number: 80
+
+
+  # - http:
+  #     paths:
+  #     - path: /
+  #       pathType: Prefix
+  #       backend:
+  #         service:
+  #           name: mech-client-service
+  #           port:
+  #             number: 3000

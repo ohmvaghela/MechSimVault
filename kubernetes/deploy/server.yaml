@@ -2,6 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mech-server-deployment
+  namespace: mech-server
+  labels:
+    app: mech-server
 spec:
   replicas: 1
   selector:
@@ -14,8 +17,7 @@ spec:
     spec:
       containers:
       - name: mech-server
-        # image: ohmv10/mech-server:v1.2
-        image: ohmv10/mech-server:cluster.v1.0 
+        image: ohmv10/mech-server:allhost.v21
         ports:
         - containerPort: 8000
         env:
@@ -55,20 +57,29 @@ spec:
         - name: MYSQL_PORT
           value: "3306"
         command: ["sh","/MechSimVault/container-entrypoint.sh"]
-
-
+        volumeMounts: 
+        - name: django-media-pvc
+          mountPath: /media
+      volumes:
+        - name: django-media-pvc
+          persistentVolumeClaim:
+            claimName: django-media-pvc
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
   name: mech-server-service
+  namespace: mech-server
 spec:
   selector:
     app: mech-server
+  # type: LoadBalancer
+  type: NodePort
   ports:
     - protocol: TCP
       port: 8000
       targetPort: 8000
-  # type: LoadBalancer
+
+
 

@@ -2,6 +2,7 @@ from pathlib import Path
 from datetime import timedelta
 import dj_database_url
 import environ
+import os
 
 env = environ.Env()
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -11,7 +12,8 @@ SECRET_KEY = env('SECRET_KEY')
 
 DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1', 'mechsimvault.onrender.com'])
+# ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1', 'mechsimvault.onrender.com'])
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
 
 AUTH_USER_MODEL = "siteUser.SiteUser"
 
@@ -54,10 +56,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=[
-    'https://mech-sim-vault-client.onrender.com',
-    'http://localhost:3000'
-])
+# CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=[
+#     'https://mech-sim-vault-client.onrender.com',
+#     'http://localhost:3000'
+# ])
+CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS').split(',')
+
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = [
@@ -102,6 +106,7 @@ DATABASES = {
         'NAME': env('MYSQL_DATABASE'),
         'USER': env('MYSQL_USER'),
         'PASSWORD': env('MYSQL_PASSWORD'),
+        # comment host for local testing
         'HOST': env('MYSQL_HOST'),
         'PORT': env('MYSQL_PORT'),
     }
@@ -131,14 +136,11 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'media/static/'
-MEDIA_URL = 'media/media/'
-STATIC_ROOT = BASE_DIR / 'media/staticfiles'
-MEDIA_ROOT = BASE_DIR / 'media/media'
-
-STATICFILES_DIRS = [
-    BASE_DIR / 'media/static',
-]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+MEDIA_STORAGE = 'django.core.files.storage.FileSystemStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATIC_URL = 'static/'
+STATIC_ROOT = '/static/'
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT =  '/media/'

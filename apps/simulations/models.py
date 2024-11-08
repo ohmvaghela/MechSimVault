@@ -21,29 +21,29 @@ class Simulation(models.Model):
         self.dislikes = 0
       super().save(*args, **kwargs)
 
-    def delete(self, *args, **kwargs):
-      self.delete_zip_file()
-      self.delete_zip_photos()
-      self.delete_simulation_image()
-      super().delete(*args, **kwargs)
+    # def delete(self, *args, **kwargs):
+    #   self.delete_zip_file()
+    #   self.delete_zip_photos()
+    #   self.delete_simulation_image()
+    #   super().delete(*args, **kwargs)
 
-    def delete_zip_file(self):
-        if self.zip_file and os.path.isfile(self.zip_file.path):
-            os.remove(self.zip_file.path)
-            self.zip_file = None
-            self.save()
+    # def delete_zip_file(self):
+    #     if self.zip_file and os.path.isfile(self.zip_file.path):
+    #         os.remove(self.zip_file.path)
+    #         self.zip_file = None
+    #         self.save()
 
-    def delete_zip_photos(self):
-        if self.zip_photos and os.path.isfile(self.zip_photos.path):
-            os.remove(self.zip_photos.path)
-            self.zip_photos = None
-            self.save()
+    # def delete_zip_photos(self):
+    #     if self.zip_photos and os.path.isfile(self.zip_photos.path):
+    #         os.remove(self.zip_photos.path)
+    #         self.zip_photos = None
+    #         self.save()
 
-    def delete_simulation_image(self):
-        if self.simulation_image and os.path.isfile(self.simulation_image.path):
-            os.remove(self.simulation_image.path)
-            self.simulation_image = None
-            self.save()
+    # def delete_simulation_image(self):
+    #     if self.simulation_image and os.path.isfile(self.simulation_image.path):
+    #         os.remove(self.simulation_image.path)
+    #         self.simulation_image = None
+    #         self.save()
 
     def __str__(self):
         return f"Simulation by {self.user_id.email} : {self.title}"

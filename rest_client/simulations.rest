@@ -1,7 +1,7 @@
 
 ### Get simulations
-GET http://localhost:8000/sim/get_sim/
-
+# GET http://localhost:8001/sim/get_sim/
+GET http://mechsimvault.backend.vibevaulttech.co.in/sim/get_sim/
 Content-Type: application/json
 
 ### Get simulations by ID
