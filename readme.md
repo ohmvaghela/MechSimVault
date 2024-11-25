@@ -1,15 +1,25 @@
-<center>
+<h1 align="center">
 
-<!-- |||||
-|-|-|-|-|
-| <img src="./readme_img/mysql-logo.svg" width=600/> | <img src="./readme_img/Django-Logo.png" width=1000/> | <img src="./readme_img/docker.svg" width=500/> | <img src="./readme_img/react-2.svg" width=500 /> | -->
+ MechSimVault
+
+</h1>
+
+<div align='center'>
+
 <img src="./readme_img/mech.svg" width=400/>
 
-# MechSimVault
+</div>
 
-</center>
+<h1 align="center">
 
-- This is free cloud-based collaboration environment that helps engineering teams manage, view, and share simulations.
+Purpose
+
+</h1>
+<div align="center">
+
+## - This is free cloud-based collaboration environment that helps engineering teams manage, view, and share simulations, similar to grabCAD but for sharing simulations
+
+</div>
 
 ## Setting local django enviroment
 - Django : `v5.1`
@@ -31,7 +41,7 @@
   MYSQL_PORT= # set MYSQL_PORT
 
   # client port or url 
-  CORS_ALLOWED_ORIGINS=http://localhost:3000
+  CORS_ALLOWED_ORIGINS=http://localhost:3000,http://example.com
   ```
 - Setup python virtual env 
   ```
@@ -49,8 +59,45 @@
 
 ## Testing for server
 - Create user using the rest client code present in rest_client folder
+
+  ```yaml
+  ### Create 
+  # POST http://localhost:8001/siteUser/create_user/
+  POST https://mechsimvault.backend.vibevaulttech.co.in/siteUser/create_user/
+  Content-Type: application/json
+
+  {
+    "email": "newuser1@example.com",
+    "password": "ohm123ohm",
+    "full_name": "New User",
+    "bio": "This is a new user.",
+    "institution": "Example Institution",
+    "role": "Developer",
+    "country": "INDIA",
+    "contact_info": "1234567890",
+    "skills": "Python, Django"
+  }
+
+  ```
+- Alternate CURL request 
+  ```
+  curl -X POST \
+    https://mechsimvault.backend.vibevaulttech.co.in/siteUser/create_user/ \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "email": "newuser1@example.com",
+      "password": "ohm123ohm",
+      "full_name": "New User",
+      "bio": "This is a new user.",
+      "institution": "Example Institution",
+      "role": "Developer",
+      "country": "INDIA",
+      "contact_info": "1234567890",
+      "skills": "Python, Django"
+    }'
+  ```
 - Then run following in root dir
-  > - Change the host url in the unitTest.sh 
+  > ### - Change the host url in the unitTest.sh 
  
   ```bash
   sudo chmod +x unitTest.sh
@@ -143,7 +190,7 @@ networks:
 - Here I am assuming you have a domain and obtained a tls/ssl certificate
 - Also reserve a static IP for both server and client
 - The app wont work untill it is deployed on HTTPS as the CORS wont allow to attach cookies to the requests
-
+- Add this file 
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -165,5 +212,33 @@ data:
   mysql-database: # 64 byte encoding 
   mysql-user: # 64 byte encoding 
   mysql-password: # 64 byte encoding 
+```
+
+
+# After adding these files if you want to auto
+
+- If you are using GKE then directly run
+```sh
+# mode is gke or minikube
+./create-cluster.sh <mode>
+./create-cluster.sh gke
+./create-cluster.sh minikube
+
+```
+> ### `gke` mode will automatically reserve static global ip in google cloud 
+- If you are using minikube then change storageclass in `pvc.yaml`
+```sh
+  # from 
+  
+  storageClassName: standard-rwo
+  # to 
+  
+  name: mech-server
+  storageClassName: media-storageclass
+  
+  ---
+
+  name: mysql-pvc
+  storageClassName: mysql-storageclass
 ```
 

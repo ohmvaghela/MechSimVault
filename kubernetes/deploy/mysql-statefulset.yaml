@@ -41,10 +41,6 @@ spec:
                 secretKeyRef:
                   name: mysql-secret
                   key: mysql-password                  
-          # command:
-          #   - mongod
-          #   - "--bind_ip_all"
-          #   - --config=/etc/mongo/mongodb.conf
           volumeMounts:
             - name: mysql-storage
               mountPath: /var/lib/mysql
